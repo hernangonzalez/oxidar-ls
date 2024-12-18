@@ -22,7 +22,12 @@ ensure_build
 # Run the tests
 puts "Running tests..."
 stage = select_stage
-system "cargo test --release --features stage#{stage}"
+test_resut = system "cargo test --release --features stage#{stage}"
 
 # Congrats!
-puts "All Done!"
+if test_resut 
+    puts "All Done!"
+else 
+    puts "Oops, something went wrong!"
+    exit 1
+end
